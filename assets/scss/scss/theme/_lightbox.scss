@@ -1,0 +1,106 @@
+//----------------------------------------------------------//
+//	LIGHTBOX
+//----------------------------------------------------------//
+.goverlay {
+  background: $lightbox-bg;
+}
+.glightbox-mobile .goverlay {
+  background: $lightbox-bg;
+}
+.glightbox-clean .gclose, 
+.glightbox-clean .gnext, 
+.glightbox-clean .gprev {
+  border: 0;
+  background: $lightbox-icon-bg;
+  color: $lightbox-icon-color;
+  @include font-size(1.2rem);
+  width: 2.2rem;
+  height: 2.2rem;
+  line-height: 2.2rem;
+  border-radius: 100%;
+  margin-top: 0;
+  padding: 0;
+  box-shadow: none;
+  transition: background 0.2s ease-in-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.glightbox-clean .gprev,
+.glightbox-clean .gnext {
+  &:before {
+    font-family: $font-family-unicons;
+  }
+  &:hover {
+    background: $lightbox-icon-hover-bg;
+  }
+  &:after {
+    display: none;
+  }
+}
+.glightbox-clean .gclose {
+  &:hover {
+    background: $lightbox-icon-hover-bg;
+  }
+  &:after {
+    font-family: $font-family-unicons;
+    content: $icon-close;
+  }
+}
+.glightbox-clean .gprev {
+  left: 1rem;
+  &:before {
+    content: $icon-prev;
+  }
+}
+.glightbox-clean .gnext {
+  right: 1rem;
+  &:before {
+    content: $icon-next;
+  }
+}
+.glightbox-clean .gprev svg,
+.glightbox-clean .gnext svg,
+.glightbox-clean .gclose svg {
+  display: none;
+}
+.glightbox-clean .gprev.disabled,
+.glightbox-clean .gnext.disabled,
+.glightbox-clean .gclose.disabled {
+  display: none;
+}
+.gbtn.focused {
+  outline: none;
+}
+.glightbox-clean .gslide-media {
+  box-shadow: none;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+.glightbox-clean .gslide-description {
+  background: none;
+}
+.glightbox-clean .gdesc-inner {
+  padding: 1rem 0 1rem 0;
+  text-align: center;
+  .gslide-title {
+    margin: 0;
+  }
+  .gslide-title + .gslide-desc {
+    margin-top: 0.3rem;
+  }
+  .gslide-title,
+  .gslide-desc {
+    color: $white;
+  }
+}
+@media (min-width: 768px) {
+  .glightbox-clean .gprev,
+  .glightbox-clean .gnext {
+    transform: translateY(-50%);
+    top: 50%;
+  }
+}
+.gvideo .plyr {
+  border-radius: 0 !important;
+}

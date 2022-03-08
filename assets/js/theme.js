@@ -1,4 +1,4 @@
-;
+
 (function($) {
   'use strict';
   var theme = {
@@ -26,11 +26,9 @@
       theme.owlCarousel();
       theme.heroSlider();
       theme.animatedCaptions();
-      theme.lightbox();
       theme.plyr();
       theme.progressBar();
       theme.pageProgress();
-      theme.counterUp();
       theme.bsTooltips();
       theme.bsPopovers();
       theme.bsModal();
@@ -437,47 +435,6 @@
       });
     },
     /**
-     * GLightbox
-     * Enables lightbox functionality
-     * Requires assets/js/vendor/glightbox.js
-    */
-    lightbox: () => {
-      const lightbox = GLightbox({
-        selector: '*[data-glightbox]',
-        touchNavigation: true,
-        loop: false,
-        zoomable: false,
-        autoplayVideos: true,
-        moreLength: 0,
-        slideExtraAttributes: {
-            poster: ''
-        },
-        plyr: {
-          css: '',
-          js: '',
-          config: {
-            ratio: '16:9',
-            fullscreen: {
-              enabled: false,
-              iosNative: false
-            },
-            youtube: {
-              noCookie: true,
-              rel: 0,
-              showinfo: 0,
-              iv_load_policy: 3
-            },
-            vimeo: {
-              byline: false,
-              portrait: false,
-              title: false,
-              transparent: false
-            }
-          }
-        },
-      });
-    },
-    /**
      * Plyr
      * Enables media player
      * Requires assets/js/vendor/plyr.js
@@ -580,30 +537,6 @@
           return false;
         })
       }
-    },
-    /**
-     * Counter Up
-     * Counts up to a targeted number when the number becomes visible
-     * Requires assets/js/vendor/counterup.min.js
-     * Requires assets/js/vendor/jquery.waypoints.min.js
-    */
-    counterUp: () => {
-      var counterUp = window.counterUp["default"]; // import counterUp from "counterup2"	
-      var $counters = $(".counter");
-      /* Start counting, do this on DOM ready or with Waypoints. */
-      $counters.each(function(ignore, counter) {
-        var waypoint = new Waypoint({
-          element: $(this),
-          handler: function() {
-            counterUp(counter, {
-              duration: 1000,
-              delay: 50
-            });
-            this.destroy();
-          },
-          offset: 'bottom-in-view',
-        });
-      });
     },
     /**
      * Bootstrap Tooltips
@@ -755,41 +688,8 @@
         });
       }
     },
-    /**
-     * Clipboard.js
-     * Enables clipboard on docs
-     * Requires assets/js/vendor/clipboard.min.js
-    */
-    codeSnippet: () => {
-      var btnHtml = '<button type="button" class="btn btn-sm btn-white rounded-pill btn-clipboard">Copy</button>'
-      document.querySelectorAll('.code-wrapper-inner')
-        .forEach(function (element) {
-          element.insertAdjacentHTML('beforebegin', btnHtml)
-        })
-      var clipboard = new ClipboardJS('.btn-clipboard', {
-        target: function (trigger) {
-          return trigger.nextElementSibling
-        }
-      })
-      clipboard.on('success', event => {
-        event.trigger.textContent = 'Copied!';
-        event.clearSelection();
-        setTimeout(() => {
-          event.trigger.textContent = 'Copy';
-        }, 2000);
-      });
-      var copyIconCode = new ClipboardJS('.btn-copy-icon');
-      copyIconCode.on('success', function(event) {
-        event.clearSelection();
-        event.trigger.textContent = 'Copied!';
-        window.setTimeout(function() {
-          event.trigger.textContent = 'Copy';
-        }, 2300);
-      });
-    },
-  }
   /**
    * Init theme core
    */
-  theme.init();
+  // theme.init();
 })(jQuery);
